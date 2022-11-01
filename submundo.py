@@ -21,11 +21,43 @@ class Player():
         
 player1 = Player()
 player2 = Player()
-iniciativaPlayer1 = random.randrange(1, 20)
-iniciativaPlayer2 = random.randrange(1, 20)
 
 
+def RolagemDados():
+    while True:
+        os.system('cls')
+        print('========== INICIATIVA ==========')
 
+        iniciativa = input('Quem irá rolar a iniciativa primeiro? (digite 1 para o Player 1 ou 2 para o Player 2)\n')
+        if (iniciativa == "1"):
+            rolagemIniciativa1 = random.randrange(1, 20)
+            rolagemIniciativa2 = random.randrange(1, 20)
+            
+            print('Girando iniciativa... ')
+            sleep(5)
+            print(f'Sua iniciativa foi: |{rolagemIniciativa1}|\n')
+            print(f'Girando iniciativa do Player 2... ')
+            sleep(5)
+            print(f'Sua iniciativa foi: |{rolagemIniciativa2}|\n')
+            break
+
+        elif(iniciativa == "2"):
+            rolagemIniciativa2 = random.randrange(1, 20)
+            rolagemIniciativa1 = random.randrange(1, 20)
+            print('Girando iniciativa... ')
+            sleep(5)
+            print(f'Sua iniciativa foi |{rolagemIniciativa2}|\n')
+            print(f'Girando iniciativa do Player 1...')
+            sleep(5)
+            print(f'Sua iniciativa foi: |{rolagemIniciativa1}|\n')
+            break
+        
+        else:
+            print('Número de player inválido, por favor tente novamente: ')
+            
+        if (rolagemIniciativa1 > rolagemIniciativa2):
+            pass
+        
 
 def PersonagensPlayer1():
     #Limpar o terminal
@@ -34,6 +66,7 @@ def PersonagensPlayer1():
     
     #Laço de seleção de personagem
     while True:
+        
         #Onde será feito a escolha1
         escolha1 = input("Player 1: Escolha um personagem:\n 1- Kenji\n 2- Aoki\n 3- Hei\n 4- Hideki\n 5- Edward\n \n Número: ")
         
@@ -46,7 +79,7 @@ def PersonagensPlayer1():
             player1.carisma = 1
             player1.vida = 32
             player1.armas = ['Duas Wakizashis', 'Arco Longo', 'Corpo a Corpo']
-            player1.skills = ['Golpe Esquentado', 'Ataque com Arco Longo', 'Ataque duplo de Wakizashi', 'Cura com frasco de sangue']
+            player1.skills = ['0- Golpe Esquentado', '1- Ataque com Arco Longo', '2- Ataque duplo de Wakizashi', '3- Cura com frasco de sangue']
             break
     
         elif (escolha1 == "2"):
@@ -63,7 +96,7 @@ def PersonagensPlayer1():
             break
         else:
             print("\nNúmero inválido, digite a enumeração correta do personagem desejado\n")
-            
+
 
 def PersonagensPlayer2():
     #Limpar o terminal
@@ -110,5 +143,6 @@ def PersonagensPlayer2():
 #Chamando função de PersonagensPlayer1
 PersonagensPlayer1()
 PersonagensPlayer2()
+RolagemDados()
+#print(f'Girando a Iniciativa do Player 1: {iniciativaPlayer1}\nGirando Iniciativa do Player 2: {iniciativaPlayer2}')
 
-print(f'Girando a Iniciativa do Player 1: {iniciativaPlayer1}\nGirando Iniciativa do Player 2: {iniciativaPlayer2}')
