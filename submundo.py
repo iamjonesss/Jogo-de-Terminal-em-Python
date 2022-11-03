@@ -1,5 +1,4 @@
-                                                    #ESTUDO DE POO
-
+                                                                                    #ESTUDO DE POO
 #IMPORTAÇÕES
 import os
 import random
@@ -19,11 +18,12 @@ class Player():
         self.armas = ''
         self.skills = ''
         
+        
 player1 = Player()
 player2 = Player()
 
 
-def RolagemDados():
+def RolagemIniciativa():
     while True:
         os.system('cls')
         print('========== INICIATIVA ==========')
@@ -55,9 +55,11 @@ def RolagemDados():
         else:
             print('Número de player inválido, por favor tente novamente: ')
             
-        if (rolagemIniciativa1 > rolagemIniciativa2):
-            pass
+    if (rolagemIniciativa1 > rolagemIniciativa2):
+        print('Player 1 começa a luta!')
         
+    else: 
+        print('Player 2 começa a luta!')
 
 def PersonagensPlayer1():
     #Limpar o terminal
@@ -68,7 +70,7 @@ def PersonagensPlayer1():
     while True:
         
         #Onde será feito a escolha1
-        escolha1 = input("Player 1: Escolha um personagem:\n 1- Kenji\n 2- Aoki\n 3- Hei\n 4- Hideki\n 5- Edward\n \n Número: ")
+        escolha1 = input('Player 1: Escolha um personagem:\n 1- Kenji\n 2- Aoki\n 3- Hei\n 4- Hideki\n 5- Edward\n \n Número: ')
         
         #Processamento das escolhas
         if (escolha1 == "1"):
@@ -85,6 +87,7 @@ def PersonagensPlayer1():
         elif (escolha1 == "2"):
             pass
             break
+
         elif(escolha1 == "3"):
             pass
             break
@@ -96,9 +99,12 @@ def PersonagensPlayer1():
             break
         else:
             print("\nNúmero inválido, digite a enumeração correta do personagem desejado\n")
-
+            
+        return
 
 def PersonagensPlayer2():
+
+    
     #Limpar o terminal
     os.system('cls')
     print('========== SELEÇÃO DO PERSONAGEM PLAYER 2 ==========')
@@ -138,11 +144,11 @@ def PersonagensPlayer2():
         else:
             print("\nNúmero inválido, digite a enumeração correta do personagem desejado\n")
 
+        return
 
 
 #Chamando função de PersonagensPlayer1
 PersonagensPlayer1()
 PersonagensPlayer2()
-RolagemDados()
-#print(f'Girando a Iniciativa do Player 1: {iniciativaPlayer1}\nGirando Iniciativa do Player 2: {iniciativaPlayer2}')
+RolagemIniciativa()
 
