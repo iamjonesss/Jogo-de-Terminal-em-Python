@@ -8,6 +8,7 @@ from time import sleep
 class Player():
     #Inicialização da função para inserir os atributos
     def __init__(self):
+        self.personagem = ''
         self.forca = 0
         self.destreza = 0
         self.constituicao = 0
@@ -17,8 +18,7 @@ class Player():
         self.vida = 0
         self.armas = ''
         self.skills = ''
-        
-        
+
 player1 = Player()
 player2 = Player()
 
@@ -30,6 +30,9 @@ def RolagemIniciativa():
 
         iniciativa = input('Quem irá rolar a iniciativa primeiro? (digite 1 para o Player 1 ou 2 para o Player 2)\n')
         if (iniciativa == "1"):
+            global rolagemIniciativa1
+            global rolagemIniciativa2
+
             rolagemIniciativa1 = random.randrange(1, 20)
             rolagemIniciativa2 = random.randrange(1, 20)
             
@@ -55,13 +58,8 @@ def RolagemIniciativa():
         else:
             print('Número de player inválido, por favor tente novamente: ')
             
-    if (rolagemIniciativa1 > rolagemIniciativa2):
-        print('Player 1 começa a luta!')
-        
-    else: 
-        print('Player 2 começa a luta!')
-
 def PersonagensPlayer1():
+    
     #Limpar o terminal
     os.system('cls')
     print('========== SELEÇÃO DO PERSONAGEM PLAYER 1 ==========')
@@ -74,6 +72,7 @@ def PersonagensPlayer1():
         
         #Processamento das escolhas
         if (escolha1 == "1"):
+            player1.personagem = 'Kenji'
             player1.forca = 1
             player1.destreza = 5
             player1.constituicao = 2
@@ -99,8 +98,6 @@ def PersonagensPlayer1():
             break
         else:
             print("\nNúmero inválido, digite a enumeração correta do personagem desejado\n")
-            
-        return
 
 def PersonagensPlayer2():
 
@@ -115,6 +112,7 @@ def PersonagensPlayer2():
         escolha2 = input("Player 1: Escolha um personagem:\n 1- Kenji\n 2- Aoki\n 3- Hei\n 4- Hideki\n 5- Edward\n \n Número: ")
         #Processamento das escolhas
         if (escolha2 == "1"):
+            player2.personagem = 'Kenji'
             player2.forca = 1
             player2.destreza = 5
             player2.constituicao = 2
@@ -144,11 +142,17 @@ def PersonagensPlayer2():
         else:
             print("\nNúmero inválido, digite a enumeração correta do personagem desejado\n")
 
-        return
+def Batalha():
+        if (rolagemIniciativa1 > rolagemIniciativa2):
+            print(f'{player1.personagem} começa a luta!\n| Seu turno: {player1.armas} {player1.skills}')
 
+        else:
+            print(f'{player2.personagem} começa a luta!\n| Seu turno: {player2.armas} {player2.skills}')
 
 #Chamando função de PersonagensPlayer1
 PersonagensPlayer1()
 PersonagensPlayer2()
 RolagemIniciativa()
+Batalha()
+
 
